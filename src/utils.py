@@ -1,1 +1,9 @@
-# implement generate random list/array to sort
+from random import randint
+
+def generate_random_array(n: int):
+    a = n * [0]
+
+    for i in range(n):
+        a[i] = randint(1, 10)
+
+    return a
