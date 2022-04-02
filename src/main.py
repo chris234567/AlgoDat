@@ -1,18 +1,20 @@
 from datetime import datetime
+from heapq import merge
 from utils import generate_random_array
-from sorting_algorithms.insertion_sort import sort, BIG_O
 
-a = generate_random_array(100)
+from sorting_algorithms.insertion_sort import sort as insertion_sort, BIG_O
 
-# print("----unsorted array----")
-# print(a)
+a = generate_random_array(10)
 
-t1 = datetime.now()
-sorted = sort(a)
-t2 = datetime.now()
+# # print("----unsorted array----")
+# # print(a)
 
-# print("\n-----sorted array-----")
-# print(sorted)
+# t1 = datetime.now()
+# sorted = insertion_sort(a)
+# t2 = datetime.now()
 
-print("\nTime complexity for insertion sort is {}.".format(BIG_O))
-print("The runtime is {} seconds.".format(str((t2 - t1))[5:]))
+# # print("\n-----sorted array-----")
+# # print(sorted)
+
+# print("\nTime complexity for insertion sort is {}.".format(BIG_O))
+# print("The runtime is {} seconds.".format(str((t2 - t1))[5:]))
