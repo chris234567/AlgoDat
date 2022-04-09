@@ -1,0 +1,1 @@
+note runtime, memory usage and stablility for every algorithm

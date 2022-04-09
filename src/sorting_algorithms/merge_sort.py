@@ -1,4 +1,4 @@
-def sort(a):
+def sort(a: list):
     a1 = a[:len(a)//2]
     a2 = a[len(a)//2:]
 
