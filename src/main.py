@@ -22,4 +22,4 @@ a = generate_random_array(10)
 
 #print(merge_sort(a))
 
-print(quick_sort(a, 0, len(a)))
+print(quick_sort(a, 0, len(a) - 1))
