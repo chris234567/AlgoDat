@@ -1,3 +1,5 @@
+test.py
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
