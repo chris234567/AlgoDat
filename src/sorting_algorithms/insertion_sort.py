@@ -1,7 +1,7 @@
 BIG_O = "n^2"
 
 
-def sort(a: list):
+def sort(a: list[int]) -> list[int]:
     for j in range(1, len(a)):
         key = a[j]
         i = j - 1

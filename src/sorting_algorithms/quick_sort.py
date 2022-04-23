@@ -1,6 +1,6 @@
 from .sort_utils import swap
 
-def sort(l: list, p: int, r: int):
+def sort(l: list[int], p: int, r: int) -> list[int]:
     # Only sort lists with more than one element.
     # Lists with 1 or 0 elements are already sorted.
     if p < r:

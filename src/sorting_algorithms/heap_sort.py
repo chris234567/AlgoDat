@@ -1,12 +1,14 @@
 from sort_utils import swap
 
 
-def build_max_heap(l: list):
+## WIP ##
+
+def build_max_heap(l: list[int]) -> list[int]:
     for i in range(len(l) // 2, 1, -1):
         heapify(l, i, len(l))
 
 
-def heapify(l: list, i, last):
+def heapify(l: list[int], i: int, last: int) -> list[int]:
     max = None
     left = (i * 2) - 1
     right = (i * 2 + 1) - 1
@@ -24,7 +26,7 @@ def heapify(l: list, i, last):
         heapify(l, last, max)
 
 
-def sort(l: list):
+def sort(l: list[int]) -> list[int]:
     build_max_heap(l)
 
     for i in range(len(l) - 1, 1, -1):
