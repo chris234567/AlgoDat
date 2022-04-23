@@ -1,63 +1,40 @@
-from .sort_utils import swap
+from sort_utils import swap
 
 
-def build_max_heap(a: list):
-    # move from last parent node to first
-    index_of_last_parent = int(len(a)/ 2)
-
-    for i in range(index_of_last_parent, 1, -1):
-        max = i
-
-        # check if children are smaller
-        if a[i] < a[i * 2]:
-            max = a[i * 2]
-            
-        elif a[i] < a[i * 2 + 1]:
-            max = a[i * 2 + 1]
-
-        if max != i:
-            swap(a, i, max)
-            
-
-        else:
-            # move to next parent
-            return
-
-    return
+def build_max_heap(l: list):
+    for i in range(len(l) // 2, 1, -1):
+        heapify(l, i, len(l))
 
 
-def heapify(a: list, i):
-    max = i - 1
+def heapify(l: list, i, last):
+    max = None
+    left = (i * 2) - 1
+    right = (i * 2 + 1) - 1
 
-    if a[i - 1] < a[(i * 2) - 1]:
-        max = (i * 2) - 1
-        
-    elif a[i - 1] < a[(i * 2 + 1) - 1]:
-        max = (i * 2 + 1) - 1
+    # Left leaf
+    if left <= last and l[i] < l[left]:
+        max = left
 
-    # check if max changed
-    if max != i - 1:
-        swap(a, i - 1, max)
-        a = heapify(a, max)
+    # Right lead 
+    elif right <= last and l[i] < l[right]:
+        max = right
 
-    return a
+    if max:
+        swap(l, i, max)
+        heapify(l, last, max)
 
 
-def sort(a: list):
-    #a_max_heap = build_max_heap(a)
-    a_max_heap = a
-    a_sorted = len(a) * [0]
+def sort(l: list):
+    build_max_heap(l)
 
-    for i in range(1, len(a_max_heap) + 1):
-        # take out max elem
-        a_sorted[-i] = a_max_heap[0]
-        a_max_heap[0] = a_max_heap[-1]
-        a_max_heap = a_max_heap[:-1]
+    for i in range(len(l) - 1, 1, -1):
+        # "Take out" max elem or move to end aka sort
+        swap(l, 0, i)
 
         # heapify
-        a_max_heap = heapify(a_max_heap, 1)
+        l = heapify(l, 0, i)
 
-    return a_sorted
+    return l
 
 
-print(sort([1, 9, 4, 3, 6, 4, 5]))
+print(sort([1, 6, 2, 4, 5, 8, 3 , 4, 3]))
