@@ -1,10 +1,6 @@
 from .sort_utils import swap
 
 
-### WIP.... #####
-
-
-
 def build_max_heap(a: list):
     # move from last parent node to first
     index_of_last_parent = int(len(a)/ 2)
@@ -39,6 +35,7 @@ def heapify(a: list, i):
     elif a[i - 1] < a[(i * 2 + 1) - 1]:
         max = (i * 2 + 1) - 1
 
+    # check if max changed
     if max != i - 1:
         swap(a, i - 1, max)
         a = heapify(a, max)
@@ -63,4 +60,4 @@ def sort(a: list):
     return a_sorted
 
 
-print(sort([15, 10, 9, 8, 5, 4, 3, 1]))
+print(sort([1, 9, 4, 3, 6, 4, 5]))
