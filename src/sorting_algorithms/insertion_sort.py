@@ -1,6 +1,3 @@
-BIG_O = "n^2"
-
-
 def sort(a: list[int]) -> list[int]:
     for j in range(1, len(a)):
         key = a[j]

@@ -1,42 +1,40 @@
-from sort_utils import swap
+from .sort_utils import swap
 
 
-## WIP ##
+def heapify(l: list[int], i: int, heap_size: int) -> list[int]:
+    max = i
+    left = i * 2 + 1
+    right = left + 1
 
-def build_max_heap(l: list[int]) -> list[int]:
-    for i in range(len(l) // 2, 1, -1):
-        heapify(l, i, len(l))
-
-
-def heapify(l: list[int], i: int, last: int) -> list[int]:
-    max = None
-    left = (i * 2) - 1
-    right = (i * 2 + 1) - 1
-
-    # Left leaf
-    if left <= last and l[i] < l[left]:
+    # Compare value at i to left leaf
+    if left <= heap_size and l[i] < l[left]:
         max = left
 
-    # Right lead 
-    elif right <= last and l[i] < l[right]:
+    # Compare value at i to left leaf
+    if right <= heap_size and l[max] < l[right]:
         max = right
 
-    if max:
+    if max != i:
         swap(l, i, max)
-        heapify(l, last, max)
+        heapify(l, max, heap_size)
 
 
 def sort(l: list[int]) -> list[int]:
-    build_max_heap(l)
+    heap_size = len(l) - 1
 
-    for i in range(len(l) - 1, 1, -1):
-        # "Take out" max elem or move to end aka sort
+    # Build max heap
+    for i in range(((len(l)) // 2) - 1, -1, -1):
+        heapify(l, i, heap_size)
+
+    for i in range(len(l) - 1, 0, -1):
+        # Swap the root element aka the max element with the last leaf 
+        # in order to sort max to min from left of the list inward
         swap(l, 0, i)
 
-        # heapify
-        l = heapify(l, 0, i)
+        # Reduce heap_size in order for the last already sorted element to be ignored
+        heap_size -= 1
+
+        # Max-Heapify the now not anymore max heap because of the swap
+        heapify(l, 0, heap_size)
 
     return l
-
-
-print(sort([1, 6, 2, 4, 5, 8, 3 , 4, 3]))
