@@ -1,4 +1,4 @@
-from sort_utils import swap
+from .sort_utils import swap
 
 def sort(l: list[int]) -> list[int]:
     for i in range(len(l) - 1):
@@ -7,3 +7,6 @@ def sort(l: list[int]) -> list[int]:
                 swap(l, i, r)
 
     return l
+
+
+print(sort([1, 6, 43, 3, 5, 2, 1, 2]))
