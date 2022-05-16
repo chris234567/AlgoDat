@@ -12,6 +12,3 @@ def fib(n: int):
             already_computed[i] = fib
 
     return list(already_computed.values())[-1]
-
-
-print(fib(10))
